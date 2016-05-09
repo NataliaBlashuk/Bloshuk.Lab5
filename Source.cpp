@@ -7,6 +7,7 @@ Student InitStudent();
 Student* InitArray(int);
 void DisplayArray(Student*, int);
 void EnterArray(int*, int&);
+void DisplayChoise(Student*, int, char*, double, double);
 void SortFirstName(Student*, int);
 void Swap(Student&, Student&);
 
