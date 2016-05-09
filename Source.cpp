@@ -23,9 +23,19 @@ int main()
 		system("pause");
 		return 0;
 	}
-	cout << "\nThe list of students\n";
+	cout << "\nThe list of Students\n";
 	DisplayArray(students, n);
-	cout << "\n\nThe sorting list of students \n";
+	char genderTag[M];
+	cout << "\nEnter the gender (m/M if man, w/W if woman) ";
+	cin >> genderTag;
+	int lowScore, upperScore;
+	cout << "\nEnter the low boundary of passing score ";
+	cin >> lowScore;
+	cout << "\nEnter the upper boundary of passing score ";
+	cin >> upperScore;
+	cout << "\n\nThe list of choise-Students:\n";
+	DisplayChoise(students, n, genderTag, lowScore, upperScore);
+	cout << "\n\nThe sorting list of Students: \n";
 	SortFirstName(students, n);
 	DisplayArray(students, n);
 	delete[] students;
@@ -96,12 +106,19 @@ void EnterArray(int* array, int& k)
 	}
 }
 
-
 void DisplayArray(Student* array, int n)
 {
 	for (int i = 0; i < n; i++)
 		array[i].DisplayStudent();
 	cout << endl;
+}
+
+void DisplayChoise(Student* array, int Dimension, char* genderTag, double lowScore, double upperScore)
+{
+	for (int i = 0; i < Dimension; i++)
+		if (!strcmp(array[i].GetGender(), genderTag) && array[i].GetPassingScore() 
+			<= upperScore  &&  array[i].GetPassingScore() >= lowScore)
+			array[i].DisplayStudent();
 }
 
 void SortFirstName(Student* array, int n)
